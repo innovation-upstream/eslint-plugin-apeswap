@@ -1,0 +1,35 @@
+common_js_unit_tests:
+  stage: test
+  variables:
+    NODE_ENV: development
+  image: node:12.15.0
+  before_script:
+    - yarn install --frozen-lockfile
+  script:
+    - yarn test
+  rules:
+    - if: '($CI_PIPELINE_SOURCE == "push" || $CI_PIPELINE_SOURCE == "merge_request_event") && ($CI_COMMIT_BRANCH == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main")'
+      changes:
+        - "./**/*"
+      when: always
+    - if: '$FORCE_PIPELINE == "true" || $FORCE_COMMON_JS_PIPELINE == "true"'
+      when: always
+
+common_js_deploy:
+  stage: deploy
+  image: node:12.15.0
+  variables:
+    NODE_ENV: production
+  script:
+    - echo @innovationupstream:registry=https://gitlab.innovationup.stream/api/v4/projects/${CI_PROJECT_ID}/packages/npm/>.npmrc
+    - echo //gitlab.innovationup.stream/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}>>.npmrc
+    - npm publish
+  rules:
+    - if: '($CI_PIPELINE_SOURCE == "push") && ($CI_COMMIT_BRANCH == "main")'
+      changes:
+        - "./**/*"
+      when: on_success
+    - if: '$FORCE_PIPELINE == "true" || $FORCE_COMMON_JS_PIPELINE == "true"'
+      when: on_success
+  needs:
+    - common_js_unit_tests

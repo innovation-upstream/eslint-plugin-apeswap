@@ -1,5 +1,5 @@
 {
-  "name": "@apeswapfinance/eslint-plugin-apeswap",
+  "name": "@innovationupstream/eslint-plugin-apeswap",
   "version": "1.0.0",
   "description": "custom rules for apeswap frontend repos",
   "keywords": [
@@ -9,7 +9,7 @@
   ],
   "author": "Justus Onuoha",
   "main": "lib/index.js",
-  "repository": "https://github.com/ApeSwapFinance/eslint-plugin-apeswap",
+  "repository": "https://gitlab.innovationup.stream/apeswap/eslint-plugin-apeswap",
   "scripts": {
     "lint": "eslint .",
     "test": "mocha tests --recursive"
