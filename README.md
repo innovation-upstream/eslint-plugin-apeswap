@@ -1,4 +1,4 @@
-# eslint-plugin-apeswap
+# @apeswapfinance/eslint-plugin-apeswap
 
 custom rules for apeswap frontend repos
 
@@ -10,20 +10,20 @@ You'll first need to install [ESLint](https://eslint.org/):
 npm i eslint --save-dev
 ```
 
-Next, install `eslint-plugin-apeswap`:
+Next, install `@apeswapfinance/eslint-plugin-apeswap`:
 
 ```sh
-npm install eslint-plugin-apeswap --save-dev
+npm install @apeswapfinance/eslint-plugin-apeswap --save-dev
 ```
 
 ## Usage
 
-Add `apeswap` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+Add `@apeswapfinance/apeswap` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
 
 ```json
 {
     "plugins": [
-        "apeswap"
+        "@apeswapfinance/apeswap"
     ]
 }
 ```
@@ -34,7 +34,7 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
     "rules": {
-        "apeswap/rule-name": 2
+        "@apeswapfinance/apeswap/rule-name": 2
     }
 }
 ```
