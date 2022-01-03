@@ -2,7 +2,7 @@ common_js_unit_tests:
   stage: test
   variables:
     NODE_ENV: development
-  image: node:12.15.0
+  image: node:14.17.0
   before_script:
     - yarn install --frozen-lockfile
   script:
@@ -15,7 +15,7 @@ common_js_unit_tests:
 
 common_js_deploy:
   stage: deploy
-  image: node:12.15.0
+  image: node:14.17.0
   variables:
     NODE_ENV: production
   script:
